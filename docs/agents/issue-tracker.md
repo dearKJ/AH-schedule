@@ -10,6 +10,7 @@
 - **评论 issue**：`gh issue comment <number> --body "..."`
 - **加 / 去标签**：`gh issue edit <number> --add-label "..."` / `--remove-label "..."`
 - **关闭**：`gh issue close <number> --comment "..."`
+- **正文里的 `## Blocked by` 只写一行指针**，指向 issue 页面右侧的 Dependencies 面板；**不要抄一份阻塞票列表**——列表的唯一出处是原生依赖边（见下文「阻塞关系」）。正文抄的那份是副本，票号一变动就漂：2026-09-24 就漂过一次，十张票里九张的编号全错、标题全对，照号读会读到别的票。原生 dependencies 不可用时，才回退到正文那行 `Blocked by: #<n>, #<n>`。
 
 仓库从 `git remote -v` 推断；在 clone 目录里运行时 `gh` 会自动处理。
 
