@@ -34,6 +34,27 @@
 
 2. **逆向替换后逐字节相同**——把假值换回真值，结果与原始文件二进制一致，即结构未动。这比文本 diff 更硬，因为连字节长度都不放过。
 
+### 结构指纹（金标准）
+
+夹具没被改坏的判据。任何一项对不上，就说明夹具被动过了：
+
+| 项 | 值 |
+| --- | --- |
+| 文件字节数 | **38639**（索引与工作区必须一致） |
+| 行数 / 换行 | 686 行，685 个 CRLF，**0 个裸 LF** |
+| 表格 | 13 行 × 8 列（1 表头行 + 12 节次行） |
+| 带 `id` 的 `TD` 单元格 | 72 |
+| `<br>` | 40 |
+| `rowspan` | 10 |
+| `title` 属性 | 19 |
+| 逻辑网格 | 84 格（7 × 12） |
+| **解出上课安排** | **15 条** |
+| **无法配对的单元格** | **0 个** |
+
+最后两行就是规格里那条「最重要的一条测试」的期望值（见 [`docs/reference/ahpu-jwxt-export-format.md`](../../docs/reference/ahpu-jwxt-export-format.md) 第四节的 15/15）。
+
+**注意**：目前仓库里**还没有任何东西在自动断言这套数字**——没有 `pubspec.yaml`、没有 Dart 测试，Flutter 脚手架是 issue #4 的事。在那之前，改坏夹具不会有任何东西报警。写解析器（issue #5）时应当把这套数字落成断言。
+
 ### 怎么重新生成
 
 ```sh
@@ -54,6 +75,8 @@ python tools/scan_pii.py test/fixtures/
 
 真实值从 `.pii-terms`（仓库根目录，已 gitignore）读，不写进任何入库文件。**本仓库是 public**，这是硬约束不是建议（见 [`docs/spec-v0.1.md`](../../docs/spec-v0.1.md)「夹具与隐私」）。
 
+`.pii-terms` 是**这台机器上的唯一副本，没有备份**。丢了不会静默放行——`scan_pii.py` 找不到该文件会明确报错退出（刻意 fail-closed），但届时没有真值可扫，闸就等于没有。换机器或重装后要重新建一份。
+
 原始样本留在使用者的下载目录，**不提交**。
 
 ### 一个容易踩的坑：`*.xls` 必须在 `.gitattributes` 里标成 `binary`
@@ -69,3 +92,11 @@ stat -c%s test/fixtures/ahpu-jwxt-export-2026-2027-1.sanitized.xls
 ```
 
 两者都应是 **38639**。
+
+**发现存错了怎么救**：blob 一旦按文本缓存进索引，光 `git add` **不会**重新规范化——索引里仍是 37954。必须先把缓存删掉再加：
+
+```sh
+git rm --cached test/fixtures/ahpu-jwxt-export-2026-2027-1.sanitized.xls
+git add test/fixtures/ahpu-jwxt-export-2026-2027-1.sanitized.xls
+# 或一把梭：git add --renormalize .
+```
