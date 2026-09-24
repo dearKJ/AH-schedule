@@ -17,6 +17,11 @@
 *.apk   binary
 *.aab   binary
 
+# 课表导出文件是 GBK 编码的 HTML，不是真 Excel。
+# 必须按二进制处理：`* text=auto eol=lf` 会把它的 CRLF 全换成 LF，
+# 那样 clone 出来的夹具字节数就变了，锁不住教务系统模板的坑。
+*.xls  binary
+
 # Windows 脚本保持 CRLF，否则 cmd.exe 解析可能出错
 *.bat text eol=crlf
 *.cmd text eol=crlf

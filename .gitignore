@@ -20,6 +20,11 @@ desktop.ini
 *.key
 secrets.json
 
+# ---- 个人隐私 ----
+# 真实学号 / 姓名 / 班级等，供 tools/scan_pii.py 扫描用。
+# 本仓库是 public：这些值本身就不该进仓库，否则防泄漏的工具自己成了泄漏源。
+.pii-terms
+
 # ---- Node ----
 node_modules/
 dist/

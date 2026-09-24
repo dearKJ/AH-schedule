@@ -1,0 +1,686 @@
+<html xmlns:x="urn:schemas-microsoft-com:office:excel">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" /> 
+<!--[if gte mso 9]><xml>  
+    <x:ExcelWorkbook>  
+        <x:ExcelWorksheets>  
+            <x:ExcelWorksheet>  
+                <x:Name>工作表标题</x:Name>  
+                <x:WorksheetOptions>  
+                    <x:Print>  
+                        <x:ValidPrinterInfo />  
+                    </x:Print>  
+                </x:WorksheetOptions>  
+            </x:ExcelWorksheet>  
+        </x:ExcelWorksheets>  
+    </x:ExcelWorkbook>  
+</xml>  
+<![endif]-->  
+</head>
+
+<body>
+
+<div id="ExportA" width="100%" align="center" cellpadding="0" cellspacing="0">
+    <h1 align="center">个人课程表</h1>
+    <h3 align="center">2026-2027学年第一学期</h3>
+    <div style="text-align: left;margin-left: 15px;">
+        学号:3200000001&nbsp;&nbsp;&nbsp; 学生姓名:张三&nbsp;&nbsp;&nbsp;所属班级: 示例241&nbsp;&nbsp;&nbsp;总学分:18.5
+    </div>
+   		<pre>课表格式说明：教师姓名 课程名称(序号) (第n周-第m周,教室)</pre>
+    <table width="100%" id="manualArrangeCourseTable" align="center" class="gridtable" style="text-align:center" border="1">
+      <thead>
+      <tr>
+          <th style="background-color:#DEEDF7;" height="10px" width="80px">节次/周次
+          </th><th style="background-color:#DEEDF7;">
+              <font size="2px">星期一</font>
+        </th>
+          <th style="background-color:#DEEDF7;">
+              <font size="2px">星期二</font>
+        </th>
+          <th style="background-color:#DEEDF7;">
+              <font size="2px">星期三</font>
+        </th>
+          <th style="background-color:#DEEDF7;">
+              <font size="2px">星期四</font>
+        </th>
+          <th style="background-color:#DEEDF7;">
+              <font size="2px">星期五</font>
+        </th>
+          <th style="background-color:#DEEDF7;">
+              <font size="2px">星期六</font>
+        </th>
+          <th style="background-color:#DEEDF7;">
+              <font size="2px">星期日</font>
+        </th>
+      </tr>
+      </thead>
+      <tbody><tr>
+          <td style="background-color:#EEFF00">
+            <font size="2px"> 第一节</font>
+        </td>
+          <td id="TD0_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="编译原理(073170140.01) (胡冰);;;(1-12,4J410(主校区))">编译原理(073170140.01) (胡冰)<br style='mso-data-placement:same-cell;'/><br style='mso-data-placement:same-cell;'/><br style='mso-data-placement:same-cell;'/>(1-12,4J410(主校区))</td>
+          <td id="TD12_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="数字图像处理(073170280.01) (汪军);(1-8,4J209(主校区);嵌入式开发(07311116.01) (刘蓓);(9-18,4J203(主校区)">数字图像处理(073170280.01) (汪军)<br style='mso-data-placement:same-cell;'/>(1-8,4J209(主校区)<br style='mso-data-placement:same-cell;'/>嵌入式开发(07311116.01) (刘蓓)<br style='mso-data-placement:same-cell;'/>(9-18,4J203(主校区)</td>
+          <td id="TD24_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="Software Testing（软件测试技术）(073180040.01) (齐斌);(1-10,4J313(主校区);形势与政策3(16312025.H0) (孙德茹);(11-14,4J210(主校区)">Software Testing（软件测试技术）(073180040.01) (齐斌)<br style='mso-data-placement:same-cell;'/>(1-10,4J313(主校区)<br style='mso-data-placement:same-cell;'/>形势与政策3(16312025.H0) (孙德茹)<br style='mso-data-placement:same-cell;'/>(11-14,4J210(主校区)</td>
+          <td id="TD36_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD48_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="计算机组成与结构(07370070.16) (卢桂馥);;;(2-16,4J209(主校区))">计算机组成与结构(07370070.16) (卢桂馥)<br style='mso-data-placement:same-cell;'/><br style='mso-data-placement:same-cell;'/><br style='mso-data-placement:same-cell;'/>(2-16,4J209(主校区))</td>
+          <td id="TD60_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD72_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+      </tr>
+      <tr>
+          <td style="background-color:#EEFF00">
+            <font size="2px"> 第二节</font>
+        </td>
+          
+          
+          
+          <td id="TD37_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          
+          <td id="TD61_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD73_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+      </tr>
+      <tr>
+          <td style="background-color:#EEFF00">
+            <font size="2px"> 第三节</font>
+        </td>
+          <td id="TD2_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="3" class="infoTitle" title="人机交互的软件工程方法(073180030.04) (李超波);(1-8,4J410(主校区);人机交互的软件工程方法(073180030.04) (戴家树);(9-16,4J410(主校区)">人机交互的软件工程方法(073180030.04) (李超波)<br style='mso-data-placement:same-cell;'/>(1-8,4J410(主校区)<br style='mso-data-placement:same-cell;'/>人机交互的软件工程方法(073180030.04) (戴家树)<br style='mso-data-placement:same-cell;'/>(9-16,4J410(主校区)</td>
+          <td id="TD14_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD26_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="3" class="infoTitle" title="习近平新时代中国特色社会主义思想概论(16311070.38) (鲍小会);;;(1-14,4J312(主校区))">习近平新时代中国特色社会主义思想概论(16311070.38) (鲍小会)<br style='mso-data-placement:same-cell;'/><br style='mso-data-placement:same-cell;'/><br style='mso-data-placement:same-cell;'/>(1-14,4J312(主校区))</td>
+          <td id="TD38_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="编译原理(073170140.01) (胡冰);(2,停课(主校区);编译原理(073170140.01) (胡冰);(1 3-12,4J410(主校区)">编译原理(073170140.01) (胡冰)<br style='mso-data-placement:same-cell;'/>(2,停课(主校区)<br style='mso-data-placement:same-cell;'/>编译原理(073170140.01) (胡冰)<br style='mso-data-placement:same-cell;'/>(1 3-12,4J410(主校区)</td>
+          <td id="TD50_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="数字图像处理(073170280.01) (汪军);(1-8,4J209(主校区);嵌入式开发(07311116.01) (刘蓓);(9-18,4J203(主校区)">数字图像处理(073170280.01) (汪军)<br style='mso-data-placement:same-cell;'/>(1-8,4J209(主校区)<br style='mso-data-placement:same-cell;'/>嵌入式开发(07311116.01) (刘蓓)<br style='mso-data-placement:same-cell;'/>(9-18,4J203(主校区)</td>
+          <td id="TD62_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD74_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+      </tr>
+      <tr>
+          <td style="background-color:#EEFF00">
+            <font size="2px"> 第四节</font>
+        </td>
+          
+          <td id="TD15_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          
+          
+          
+          <td id="TD63_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD75_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+      </tr>
+      <tr>
+          <td style="background-color:#EEFF00">
+            <font size="2px"> 第五节</font>
+        </td>
+          
+          <td id="TD16_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          
+          <td id="TD40_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD52_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD64_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD76_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+      </tr>
+      <tr>
+          <td style="background-color:#33BB00">
+            <font size="2px"> 第六节</font>
+        </td>
+          <td id="TD5_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="Software Testing（软件测试技术）(073180040.01) (齐斌);;;(1-10,4J313(主校区))">Software Testing（软件测试技术）(073180040.01) (齐斌)<br style='mso-data-placement:same-cell;'/><br style='mso-data-placement:same-cell;'/><br style='mso-data-placement:same-cell;'/>(1-10,4J313(主校区))</td>
+          <td id="TD17_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="计算机组成与结构(07370070.16) (卢桂馥);;;(2-16,4J209(主校区))">计算机组成与结构(07370070.16) (卢桂馥)<br style='mso-data-placement:same-cell;'/><br style='mso-data-placement:same-cell;'/><br style='mso-data-placement:same-cell;'/>(2-16,4J209(主校区))</td>
+          <td id="TD29_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD41_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD53_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD65_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD77_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+      </tr>
+      <tr>
+          <td style="background-color:#33BB00">
+            <font size="2px"> 第七节</font>
+        </td>
+          
+          
+          <td id="TD30_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD42_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD54_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD66_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD78_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+      </tr>
+      <tr>
+          <td style="background-color:#33BB00">
+            <font size="2px"> 第八节</font>
+        </td>
+          <td id="TD7_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD19_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD31_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD43_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD55_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD67_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD79_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+      </tr>
+      <tr>
+          <td style="background-color:#33BB00">
+            <font size="2px"> 第九节</font>
+        </td>
+          <td id="TD8_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD20_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD32_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD44_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD56_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD68_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD80_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+      </tr>
+      <tr>
+          <td style="background-color:pink">
+            <font size="2px"> 第十节</font>
+        </td>
+          <td id="TD9_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD21_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD33_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD45_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD57_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD69_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD81_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+      </tr>
+      <tr>
+          <td style="background-color:pink">
+            <font size="2px"> 第十一节</font>
+        </td>
+          <td id="TD10_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD22_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD34_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD46_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD58_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD70_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD82_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+      </tr>
+      <tr>
+          <td style="background-color:pink">
+            <font size="2px"> 第十二节</font>
+        </td>
+          <td id="TD11_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD23_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD35_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD47_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD59_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD71_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+          <td id="TD83_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+      </tr>
+    </tbody></table> 
+<script language="JavaScript">
+	// function CourseTable in TaskActivity.js
+	var language = "zh";
+	var table0 = new CourseTable(2026,84);
+	var unitCount = 12;
+	var index=0;
+	var activity=null;
+		var teachers = [{id:754,name:"胡冰",lab:false}];
+		var actTeachers = [{id:754,name:"胡冰",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"23137(073170140.01)","编译原理(073170140.01)","-1","停课(主校区)","00100000000000000000000000000000000000000000000000000",null,null,assistantName,"","");
+			index =3*unitCount+2;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =3*unitCount+3;
+			table0.activities[index][table0.activities[index].length]=activity;
+		var teachers = [{id:754,name:"胡冰",lab:false}];
+		var actTeachers = [{id:754,name:"胡冰",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"23137(073170140.01)","编译原理(073170140.01)","254","4J410(主校区)","01111111111110000000000000000000000000000000000000000",null,null,assistantName,"","");
+			index =0*unitCount+0;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =0*unitCount+1;
+			table0.activities[index][table0.activities[index].length]=activity;
+		var teachers = [{id:754,name:"胡冰",lab:false}];
+		var actTeachers = [{id:754,name:"胡冰",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"23137(073170140.01)","编译原理(073170140.01)","254","4J410(主校区)","01011111111110000000000000000000000000000000000000000",null,null,assistantName,"","");
+			index =3*unitCount+2;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =3*unitCount+3;
+			table0.activities[index][table0.activities[index].length]=activity;
+		var teachers = [{id:91,name:"汪军",lab:false}];
+		var actTeachers = [{id:91,name:"汪军",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"24328(073170280.01)","数字图像处理(073170280.01)","155","4J209(主校区)","01111111100000000000000000000000000000000000000000000",null,null,assistantName,"","");
+			index =1*unitCount+0;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =1*unitCount+1;
+			table0.activities[index][table0.activities[index].length]=activity;
+		var teachers = [{id:91,name:"汪军",lab:false}];
+		var actTeachers = [{id:91,name:"汪军",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"24328(073170280.01)","数字图像处理(073170280.01)","155","4J209(主校区)","01111111100000000000000000000000000000000000000000000",null,null,assistantName,"","");
+			index =4*unitCount+2;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =4*unitCount+3;
+			table0.activities[index][table0.activities[index].length]=activity;
+		var teachers = [{id:5601,name:"齐斌",lab:false}];
+		var actTeachers = [{id:5601,name:"齐斌",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"23126(073180040.01)","Software Testing（软件测试技术）(073180040.01)","13","4J313(主校区)","01111111111000000000000000000000000000000000000000000",null,null,assistantName,"","");
+			index =0*unitCount+5;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =0*unitCount+6;
+			table0.activities[index][table0.activities[index].length]=activity;
+		var teachers = [{id:5601,name:"齐斌",lab:false}];
+		var actTeachers = [{id:5601,name:"齐斌",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"23126(073180040.01)","Software Testing（软件测试技术）(073180040.01)","13","4J313(主校区)","01111111111000000000000000000000000000000000000000000",null,null,assistantName,"","");
+			index =2*unitCount+0;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =2*unitCount+1;
+			table0.activities[index][table0.activities[index].length]=activity;
+		var teachers = [{id:192,name:"卢桂馥",lab:false}];
+		var actTeachers = [{id:192,name:"卢桂馥",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"6470(07370070.16)","计算机组成与结构(07370070.16)","155","4J209(主校区)","00111111111111111000000000000000000000000000000000000",null,null,assistantName,"","");
+			index =1*unitCount+5;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =1*unitCount+6;
+			table0.activities[index][table0.activities[index].length]=activity;
+		var teachers = [{id:192,name:"卢桂馥",lab:false}];
+		var actTeachers = [{id:192,name:"卢桂馥",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"6470(07370070.16)","计算机组成与结构(07370070.16)","155","4J209(主校区)","00111111111111111000000000000000000000000000000000000",null,null,assistantName,"","");
+			index =4*unitCount+0;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =4*unitCount+1;
+			table0.activities[index][table0.activities[index].length]=activity;
+		var teachers = [{id:7425,name:"李超波",lab:false},{id:510,name:"戴家树",lab:false}];
+		var actTeachers = [{id:7425,name:"李超波",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"23125(073180030.04)","人机交互的软件工程方法(073180030.04)","254","4J410(主校区)","01111111100000000000000000000000000000000000000000000",null,null,assistantName,"","");
+			index =0*unitCount+2;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =0*unitCount+3;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =0*unitCount+4;
+			table0.activities[index][table0.activities[index].length]=activity;
+		var teachers = [{id:7425,name:"李超波",lab:false},{id:510,name:"戴家树",lab:false}];
+		var actTeachers = [{id:510,name:"戴家树",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"23125(073180030.04)","人机交互的软件工程方法(073180030.04)","254","4J410(主校区)","00000000011111111000000000000000000000000000000000000",null,null,assistantName,"","");
+			index =0*unitCount+2;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =0*unitCount+3;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =0*unitCount+4;
+			table0.activities[index][table0.activities[index].length]=activity;
+		var teachers = [{id:1586,name:"孙德茹",lab:false}];
+		var actTeachers = [{id:1586,name:"孙德茹",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"3712(16312025.H0)","形势与政策3(16312025.H0)","165","4J210(主校区)","00000000000111100000000000000000000000000000000000000",null,null,assistantName,"","");
+			index =2*unitCount+0;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =2*unitCount+1;
+			table0.activities[index][table0.activities[index].length]=activity;
+		var teachers = [{id:1304,name:"刘蓓",lab:false}];
+		var actTeachers = [{id:1304,name:"刘蓓",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"22827(07311116.01)","嵌入式开发(07311116.01)","489","4J203(主校区)","00000000011111111110000000000000000000000000000000000",null,null,assistantName,"","");
+			index =1*unitCount+0;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =1*unitCount+1;
+			table0.activities[index][table0.activities[index].length]=activity;
+		var teachers = [{id:1304,name:"刘蓓",lab:false}];
+		var actTeachers = [{id:1304,name:"刘蓓",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"22827(07311116.01)","嵌入式开发(07311116.01)","489","4J203(主校区)","00000000011111111110000000000000000000000000000000000",null,null,assistantName,"","");
+			index =4*unitCount+2;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =4*unitCount+3;
+			table0.activities[index][table0.activities[index].length]=activity;
+		var teachers = [{id:367,name:"鲍小会",lab:false}];
+		var actTeachers = [{id:367,name:"鲍小会",lab:false}];
+		var assistant = _.filter(actTeachers, function(actTeacher) {
+			return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+		});
+		var assistantName = "";
+		if (assistant.length > 0) {
+			assistantName = assistant[0].name;
+			actTeachers = _.reject(actTeachers, function(actTeacher) {
+				return _.where(assistant, {id:actTeacher.id}).length > 0;
+			});
+		}
+		var actTeacherId = [];
+		var actTeacherName = [];
+		for (var i = 0; i < actTeachers.length; i++) {
+			actTeacherId.push(actTeachers[i].id);
+			actTeacherName.push(actTeachers[i].name);
+		}
+			activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"20742(16311070.38)","习近平新时代中国特色社会主义思想概论(16311070.38)","14","4J312(主校区)","01111111111111100000000000000000000000000000000000000",null,null,assistantName,"","");
+			index =2*unitCount+2;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =2*unitCount+3;
+			table0.activities[index][table0.activities[index].length]=activity;
+			index =2*unitCount+4;
+			table0.activities[index][table0.activities[index].length]=activity;
+	table0.marshalTable(2,1,20);
+	fillTable(table0,7,12,0);
+</script>
+   		
+   	<div id="tasklesson" style="position: relative;">
+   		    <br style='mso-data-placement:same-cell;'/>
+ 
+<strong>课程列表:</strong>
+<div class="grid">
+
+
+<table id="grid6428934951" class="gridtable">
+<thead class="gridhead">
+
+
+<tr>
+<th width="10%">序号</th>
+<th width="15%">课程代码</th>
+<th width="15%">课程名称</th>
+<th width="10%">学分</th>
+<th width="10%">课程序号</th>
+<th width="8%">起止周</th>
+<th width="15%">教师</th>
+<th width="15%">备注</th>
+<th width="10%">操作</th>
+</tr>
+
+</thead>
+
+<tbody id="grid6428934951_data"><tr class="griddata-even">		<td>1</td>
+<td>07311116</td><td>嵌入式开发</td><td>2.5</td><td>		<a href="/ahpu/courseTableForStd!taskTable.action?lesson.id=514447" onclick="return bg.Go(this,null)" title="点击显示单个教学任务具体安排">07311116.01</a>
+</td>		<td>9-18</td>
+<td>刘蓓</td><td>      			
+      			<br style='mso-data-placement:same-cell;'/>
+      			
+</td><td>			<a href="/ahpu/courseTableForStd!teachPlanInfo.action?lesson.id=514447" target="_blank">授课计划</a>
+			<a href="/ahpu/courseTableForStd!courseSummaryInfo.action?lesson.id=514447" target="_blank">课程小结</a>
+</td></tr><tr class="griddata-odd">		<td>2</td>
+<td>073170140</td><td>编译原理</td><td>2.5</td><td>		<a href="/ahpu/courseTableForStd!taskTable.action?lesson.id=514423" onclick="return bg.Go(this,null)" title="点击显示单个教学任务具体安排">073170140.01</a>
+</td>		<td>1-12</td>
+<td>胡冰</td><td>      			
+      			<br style='mso-data-placement:same-cell;'/>
+      			
+      			<br style='mso-data-placement:same-cell;'/>
+      			
+</td><td>			<a href="/ahpu/courseTableForStd!teachPlanInfo.action?lesson.id=514423" target="_blank">授课计划</a>
+			<a href="/ahpu/courseTableForStd!courseSummaryInfo.action?lesson.id=514423" target="_blank">课程小结</a>
+</td></tr><tr class="griddata-even">		<td>3</td>
+<td>073170280</td><td>数字图像处理</td><td>1.5</td><td>		<a href="/ahpu/courseTableForStd!taskTable.action?lesson.id=513084" onclick="return bg.Go(this,null)" title="点击显示单个教学任务具体安排">073170280.01</a>
+</td>		<td>1-8</td>
+<td>汪军</td><td>      			
+      			<br style='mso-data-placement:same-cell;'/>
+      			
+</td><td>			<a href="/ahpu/courseTableForStd!teachPlanInfo.action?lesson.id=513084" target="_blank">授课计划</a>
+			<a href="/ahpu/courseTableForStd!courseSummaryInfo.action?lesson.id=513084" target="_blank">课程小结</a>
+</td></tr><tr class="griddata-odd">		<td>4</td>
+<td>073180030</td><td>人机交互的软件工程方法</td><td>2.5</td><td>		<a href="/ahpu/courseTableForStd!taskTable.action?lesson.id=514432" onclick="return bg.Go(this,null)" title="点击显示单个教学任务具体安排">073180030.04</a>
+</td>		<td>1-16</td>
+<td>李超波,戴家树</td><td>      			
+      			<br style='mso-data-placement:same-cell;'/>
+      			
+</td><td>			<a href="/ahpu/courseTableForStd!teachPlanInfo.action?lesson.id=514432" target="_blank">授课计划</a>
+			<a href="/ahpu/courseTableForStd!courseSummaryInfo.action?lesson.id=514432" target="_blank">课程小结</a>
+</td></tr><tr class="griddata-even">		<td>5</td>
+<td>073180040</td><td>Software Testing（软件测试技术）</td><td>2</td><td>		<a href="/ahpu/courseTableForStd!taskTable.action?lesson.id=514435" onclick="return bg.Go(this,null)" title="点击显示单个教学任务具体安排">073180040.01</a>
+</td>		<td>1-10</td>
+<td>齐斌</td><td>      			
+      			<br style='mso-data-placement:same-cell;'/>
+      			
+</td><td>			<a href="/ahpu/courseTableForStd!teachPlanInfo.action?lesson.id=514435" target="_blank">授课计划</a>
+			<a href="/ahpu/courseTableForStd!courseSummaryInfo.action?lesson.id=514435" target="_blank">课程小结</a>
+</td></tr><tr class="griddata-odd">		<td>6</td>
+<td>07352030</td><td>数据库原理及应用课程设计</td><td>1</td><td>		<a href="/ahpu/courseTableForStd!taskTable.action?lesson.id=513017" onclick="return bg.Go(this,null)" title="点击显示单个教学任务具体安排">07352030.04</a>
+</td>		<td>18</td>
+<td>胡冰,刘蓓</td><td></td><td>			<a href="/ahpu/courseTableForStd!teachPlanInfo.action?lesson.id=513017" target="_blank">授课计划</a>
+			<a href="/ahpu/courseTableForStd!courseSummaryInfo.action?lesson.id=513017" target="_blank">课程小结</a>
+</td></tr><tr class="griddata-even">		<td>7</td>
+<td>07370070</td><td>计算机组成与结构</td><td>3.5</td><td>		<a href="/ahpu/courseTableForStd!taskTable.action?lesson.id=513284" onclick="return bg.Go(this,null)" title="点击显示单个教学任务具体安排">07370070.16</a>
+</td>		<td>2-16</td>
+<td>卢桂馥</td><td>      			
+      			<br style='mso-data-placement:same-cell;'/>
+      			
+</td><td>			<a href="/ahpu/courseTableForStd!teachPlanInfo.action?lesson.id=513284" target="_blank">授课计划</a>
+			<a href="/ahpu/courseTableForStd!courseSummaryInfo.action?lesson.id=513284" target="_blank">课程小结</a>
+</td></tr><tr class="griddata-odd">		<td>8</td>
+<td>16311070</td><td>习近平新时代中国特色社会主义思想概论</td><td>3</td><td>		<a href="/ahpu/courseTableForStd!taskTable.action?lesson.id=513427" onclick="return bg.Go(this,null)" title="点击显示单个教学任务具体安排">16311070.38</a>
+</td>		<td>1-14</td>
+<td>鲍小会</td><td>      			
+</td><td>			<a href="/ahpu/courseTableForStd!teachPlanInfo.action?lesson.id=513427" target="_blank">授课计划</a>
+			<a href="/ahpu/courseTableForStd!courseSummaryInfo.action?lesson.id=513427" target="_blank">课程小结</a>
+</td></tr><tr class="griddata-even">		<td>9</td>
+<td>16312025</td><td>形势与政策3</td><td>0</td><td>		<a href="/ahpu/courseTableForStd!taskTable.action?lesson.id=514471" onclick="return bg.Go(this,null)" title="点击显示单个教学任务具体安排">16312025.H0</a>
+</td>		<td>11-14</td>
+<td>孙德茹</td><td>      			
+</td><td>			<a href="/ahpu/courseTableForStd!teachPlanInfo.action?lesson.id=514471" target="_blank">授课计划</a>
+			<a href="/ahpu/courseTableForStd!courseSummaryInfo.action?lesson.id=514471" target="_blank">课程小结</a>
+</td></tr></tbody>
+</table>
+</div>
+<script type="text/javascript">
+  var clearCheckbox_grid6428934951 = function() {
+    jQuery("#grid6428934951").find(".box:checkbox").removeProp("checked");
+    jQuery("#grid6428934951").find(".gridselect-top :checkbox").removeProp("checked");
+    return true;
+  }
+  
+  page_grid6428934951 = bg.page("/ahpu/courseTableForStd!courseTable.action","");
+  {
+    var _paramstring = 'setting.kind=std&ids=475450';
+    var _params = _paramstring.split('&');
+    for (var i = 0; i < _params.length; i++) {
+      _params[i] = decodeURIComponent(_params[i]);
+    }
+    _paramstring = _params.join('&');
+    page_grid6428934951.target("",'grid6428934951').action("/ahpu/courseTableForStd!courseTable.action").addParams(_paramstring).orderBy("null");
+  }
+  bg.ui.grid.init('grid6428934951',page_grid6428934951);
+</script>
+   	</div>   
+   	
+   		<br style='mso-data-placement:same-cell;'/>
+   		    
+   		<br style='mso-data-placement:same-cell;'/>
+</div>
+
+</body>
+</html>
