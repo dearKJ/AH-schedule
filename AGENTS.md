@@ -1,6 +1,6 @@
 # AH-schedule
 
-> 待补充：一句话说明这个项目是什么。
+安徽工程大学学生的课表 App：导入教务系统导出的课表，**离线查看、一眼看全周、可分享给同学**。Android / Flutter。
 
 ## Agent skills
 
