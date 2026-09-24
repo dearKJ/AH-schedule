@@ -58,6 +58,14 @@ local.properties
 *.aab
 captures/
 
+# ---- Dart / Flutter ----
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+# 领域层是「包」不是「应用」，按 Dart 的惯例不提交它的 lock。
+# 「clone 下来就能复现」靠的是夹具本身（见 test/fixtures/README.md），不是依赖版本。
+packages/core/pubspec.lock
+
 # ---- 日志 / 临时文件 ----
 *.log
 logs/

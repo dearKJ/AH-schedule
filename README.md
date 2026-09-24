@@ -6,7 +6,7 @@
 
 ## 状态
 
-**需求阶段已完成，尚未开始编码。** 结论见下方文档。
+**需求阶段已完成。领域层（`packages/core`）已落地，App 脚手架尚未开始。** 结论见下方文档。
 
 ## 它解决什么
 
@@ -34,13 +34,11 @@ Flutter / Dart · **Riverpod** · **drift** · go_router · 仅 Android 8.0+ · 
 工程结构分三层：
 
 ```
-lib/
-├── core/    纯 Dart，不依赖 Flutter —— 领域模型、按周展开、导入解析
-├── data/    drift 数据库、仓储
-└── ui/      Flutter 界面
+packages/core/   纯 Dart，不依赖 Flutter —— 课表的数据形状，与最容易写错的纯逻辑
+app/             Flutter 工程（还没有，见 issue #4）：data/（drift 数据库、仓储）、ui/（界面）
 ```
 
-`core/` 不许 import Flutter：这段最核心、也最容易写错的逻辑必须能用最快的纯 Dart 单元测试反复砸。
+`core/` 不许 import Flutter：这段最核心、也最容易写错的逻辑必须能用最快的纯 Dart 单元测试反复砸。这条边界**由包边界强制**——它单独成包、零运行期依赖，还有一条检查盯着它，见 [`packages/core/README.md`](packages/core/README.md)。
 
 ## 文档
 
@@ -60,7 +58,15 @@ lib/
 
 ## 快速开始
 
-待补充——尚未开始编码。
+领域层（纯 Dart）已经能跑：
+
+```sh
+cd packages/core
+dart pub get
+dart test
+```
+
+App 本身的脚手架还没搭，见 issue #4。
 
 ## 许可证
 

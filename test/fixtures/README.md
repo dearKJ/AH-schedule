@@ -53,7 +53,7 @@
 
 最后两行就是规格里那条「最重要的一条测试」的期望值（见 [`docs/reference/ahpu-jwxt-export-format.md`](../../docs/reference/ahpu-jwxt-export-format.md) 第四节的 15/15）。
 
-**注意**：目前仓库里**还没有任何东西在自动断言这套数字**——没有 `pubspec.yaml`、没有 Dart 测试，Flutter 脚手架是 issue #4 的事。在那之前，改坏夹具不会有任何东西报警。写解析器（issue #5）时应当把这套数字落成断言。
+**注意**：目前仓库里**还没有任何东西在自动断言这套数字**——领域层（[`packages/core`](../../packages/core/README.md)，issue #3）已经落地，但它只定数据形状，不碰这份夹具。改坏夹具仍然不会有任何东西报警；写解析器（issue #5）时应当把这套数字落成断言。
 
 ### 怎么重新生成
 
