@@ -1,0 +1,15 @@
+# App 的分析器配置。领域层（packages/core）有它自己的一份，那份更严——它没有
+# Flutter，跑的是纯 Dart。
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  language:
+    # 与 packages/core 的 analysis_options.yaml 对齐：隐式转换、推断不出类型、
+    # 裸泛型都当场报出来。
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+  exclude:
+    - build/**
+    - android/**
+    - ios/**

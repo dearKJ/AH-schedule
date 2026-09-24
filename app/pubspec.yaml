@@ -1,0 +1,55 @@
+name: ah_schedule
+description: "AH-schedule：安徽工程大学学生的课表 App（仅 Android）。"
+# 这个 App 不发布到 pub.dev，也不面向公众发布——直接发 APK 给同学（ADR-0003）。
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Material 自带控件的中文（长按菜单、文本选择菜单）。界面文案本身写死中文，
+  # 不做国际化。
+  flutter_localizations:
+    sdk: flutter
+
+  # 领域层：纯 Dart，不依赖 Flutter。**必须是 path 依赖**——换成 hosted 版本就等于
+  # 用的不是本仓库这一份，边界成了摆设。这条有检查盯着，见
+  # test/domain_boundary_test.dart。
+  ah_schedule_core:
+    path: ../packages/core
+
+  # 状态管理。
+  flutter_riverpod: ^3.4.3
+
+  # 路由。
+  go_router: ^18.0.1
+
+  # 本地数据库。drift 自己带着 package:sqlite3（3.x 起原生库由它自己按 build hook
+  # 编译进来），所以不需要另外声明 sqlite3_flutter_libs——那个包已经 `+eol`。
+  drift: ^2.35.0
+  path_provider: ^2.1.6
+  path: ^1.9.1
+
+  # 界面里一个 Cupertino 控件都没用，但这个包别删：flutter_localizations 的代码引用了
+  # CupertinoIcons，release 构建的图标 tree-shaker 会因此去找 cupertino_icons 这套字体，
+  # 找不到就报一条吓人的警告（`Expected to find fonts for … packages/cupertino_icons/…`）。
+  cupertino_icons: ^1.0.9
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+  # drift 的代码生成。改了 lib/data/app_database.dart 之后要跑：
+  #   dart run build_runner build
+  drift_dev: ^2.35.0
+  build_runner: ^2.16.1
+
+flutter:
+  uses-material-design: true

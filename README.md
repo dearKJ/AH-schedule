@@ -6,7 +6,7 @@
 
 ## 状态
 
-**需求阶段已完成。领域层（`packages/core`）已落地，App 脚手架尚未开始。** 结论见下方文档。
+**需求阶段已完成。领域层（`packages/core`）已落地；App（`app/`）是能跑的走路骨架——三层真的接上了，但还没有周网格、导入、手动录入。** 结论见下方文档。
 
 ## 它解决什么
 
@@ -35,10 +35,10 @@ Flutter / Dart · **Riverpod** · **drift** · go_router · 仅 Android 8.0+ · 
 
 ```
 packages/core/   纯 Dart，不依赖 Flutter —— 课表的数据形状，与最容易写错的纯逻辑
-app/             Flutter 工程（还没有，见 issue #4）：data/（drift 数据库、仓储）、ui/（界面）
+app/             Flutter 工程（仅 Android）：data/（drift 数据库、仓储）、ui/（界面）
 ```
 
-`core/` 不许 import Flutter：这段最核心、也最容易写错的逻辑必须能用最快的纯 Dart 单元测试反复砸。这条边界**由包边界强制**——它单独成包、零运行期依赖，还有一条检查盯着它，见 [`packages/core/README.md`](packages/core/README.md)。
+`core/` 不许 import Flutter：这段最核心、也最容易写错的逻辑必须能用最快的纯 Dart 单元测试反复砸。这条边界**由包边界强制**——它单独成包、零运行期依赖，还有检查盯着它：`core` 自己一组，App 接进来之后又一组（见 [`app/README.md`](app/README.md)）。
 
 ## 文档
 
@@ -66,7 +66,17 @@ dart pub get
 dart test
 ```
 
-App 本身的脚手架还没搭，见 issue #4。
+App 能在 Android 模拟器 / 真机上装起来打开：
+
+```sh
+cd app
+flutter pub get
+flutter run            # 接上 Android 设备或模拟器
+flutter test           # 跑边界检查
+flutter analyze
+```
+
+参见 [`app/README.md`](app/README.md)——包括第一次构建要下载 SQLite 原生库这个坑。
 
 ## 许可证
 
