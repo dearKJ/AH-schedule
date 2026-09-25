@@ -36,6 +36,18 @@ dart test
 | `lib/src/term_settings.dart` | 学期设置（第 1 周的第一天、总周数、作息时间表） |
 | `lib/src/timetable.dart` | 课表：一个学年学期的全部安排 |
 
+导入解析（字节 → 课表 + 诊断）在这一层，但单独归拢在 `lib/src/import/`：
+
+| 文件 | 干什么 |
+| --- | --- |
+| `lib/src/import/timetable_importer.dart` | 入口：`importBytes` / `importText`，与结果类型 `TimetableImportResult` |
+| `lib/src/import/gbk_codec.dart` | GBK 解码（自带映射表，见下） |
+| `lib/src/import/gbk_table.dart` | **生成的文件**，CP936 映射表，由 `tools/generate_gbk_table.py` 烘出来 |
+| `lib/src/import/html_course_table.dart` | 抠出课表那张表、按 `rowspan` 铺成逻辑网格 |
+| `lib/src/import/cell_arrangements.dart` | 一格正文 → 叶子安排（课程名 + 教师 / 周次集合 + 地点） |
+| `lib/src/import/class_session_builder.dart` | 叶子安排 → `ClassSession`，合并停课例外 |
+| `lib/src/import/import_diagnostics.dart` | 诊断类型与代码（`ImportIssue` / `ImportDiagnostic` / `ImportSeverity`） |
+
 `lib/src/internal_helpers.dart` 是内部小工具（列表逐元素相等、空白文本归一成 null），不对外
 导出——自己写这几行是为了让这个包保持**零运行期依赖**。
 
@@ -55,6 +67,24 @@ dart test
 - 数值一律在构造时校验，越界就抛 `ArgumentError`；**认不出来的写法抛 `FormatException`
   而不是静默给一个空集合**——静默失败是这套东西最怕的结果。
 
+## 导入解析（issue #5）
+
+把导出文件的**原始字节**变成课表加一份诊断清单。那份 `.xls` 其实是 **GBK 编码的
+HTML**，所以先按 GBK 解码、再当 HTML 解析，**不需要任何 Excel 解析库**。解析规格的
+权威出处是 [`docs/reference/ahpu-jwxt-export-format.md`](../../docs/reference/ahpu-jwxt-export-format.md)。
+
+- **诊断是返回值的一部分，不是异常。** `importBytes` 只在「输入根本不是课表」（空、
+  太大、没有那张表）时返回一条错误级诊断；其余情况一律返回「解出来的那部分课表 +
+  一份说清哪里没解出来的清单」。`TimetableImportResult.hasUnparsableContent` 为真时
+  界面该让用户确认再应用——静默失败比解析出错糟得多。
+- **测试对着真实夹具跑。** `test/fixtures/` 里那份是使用者从教务系统导出的文件脱敏后
+  的副本，它锁着一批编造样本锁不住的坑（模板少写 `)`、断档周用空格分隔、停课单列
+  一条……）。夹具位置在**仓库根**，测试从 `packages/core` 往上找两格。
+- **GBK 表是烘进来的。** `lib/src/import/gbk_table.dart` 有 7 万多字节，是生成的文件，
+  不要手改；重跑用 `python tools/generate_gbk_table.py`。之所以自带一张表而不是引
+  `charset` / `fast_gbk`，是因为这个包要守住**零运行期依赖**——那是上面那条边界检查
+  赖以成立的前提。
+
 ## 「不依赖 Flutter」是怎么被强制的
 
 三条检查都在 `test/no_flutter_dependency_test.dart` 里，`dart test` 时就跑：
@@ -69,9 +99,9 @@ dart test
 
 ## 不在这里的东西
 
-这一票（issue #3）只定**数据形状**。下面这些各自有票，都落在 `core`：
+这一票（issue #3）只定**数据形状**；导入解析（issue #5）已经落进来了。下面这些各自
+有票，也都落在 `core`：
 
-- 导入解析（字节 → 课表 + 诊断）：issue #5
 - 按周展开（课表 + 教学周号 → 格子）：issue #6
 - 课表 JSON 序列化（带版本号）：issue #7
 - drift schema 与仓储：issue #8（在 `data/`，不在这里）

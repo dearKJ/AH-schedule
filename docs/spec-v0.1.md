@@ -1,7 +1,7 @@
 # 规格：AH-schedule v0.1
 
 > 本文是 v0.1 的内容书。**不在本文复述**已有文档的内容，按路径引用：
-> [`CONTEXT.md`](../CONTEXT.md)（术语唯一出处）、[`docs/adr/`](adr/)、[`docs/reference/ahpu-jwxt-export-format.md`](reference/ahpu-jwxt-export-format.md)（导出解析规格，已在真实样本上验证 15/15）、[`docs/reference/ahpu-bell-schedule.md`](reference/ahpu-bell-schedule.md)、[`docs/requirements-decisions.md`](requirements-decisions.md)（访谈遗留决定）、[`docs/research/ahpu-jwxt-and-oss-references.md`](research/ahpu-jwxt-and-oss-references.md)。
+> [`CONTEXT.md`](../CONTEXT.md)（术语唯一出处）、[`docs/adr/`](adr/)、[`docs/reference/ahpu-jwxt-export-format.md`](reference/ahpu-jwxt-export-format.md)（导出解析规格，已在真实样本上验证）、[`docs/reference/ahpu-bell-schedule.md`](reference/ahpu-bell-schedule.md)、[`docs/requirements-decisions.md`](requirements-decisions.md)（访谈遗留决定）、[`docs/research/ahpu-jwxt-and-oss-references.md`](research/ahpu-jwxt-and-oss-references.md)。
 
 ## 问题
 
@@ -183,7 +183,7 @@
 
 **解析**
 
-- 端到端全量：拿真实导出文件的脱敏夹具跑完，断言**解出的安排条数与逐格内容**（验证标准是 `docs/reference/ahpu-jwxt-export-format.md` 记录的 **7×12 = 84 格解出 15 条安排、0 个无法配对**）。这是本规格最重要的一条测试。
+- 端到端全量：拿真实导出文件的脱敏夹具跑完，断言**解出的安排条数与逐格内容**（验证标准是 `docs/reference/ahpu-jwxt-export-format.md` 记录的 **7×12 = 84 格全部解得出来、0 个无法配对**）。这是本规格最重要的一条测试。
 - 模板自身 bug：末尾缺 `)` 的多条同格、空格分隔的断档周、停课单列一条与正常条合并。
 - 未经样本验证的四种格式必须写用例但**不得声称"已验证"**（见 `docs/reference/ahpu-jwxt-export-format.md` 第六节）：单双周、断档周的标准写法、特定周、线上教学。
 - 容错：非 HTML 文件、空的课表、缺表头的文件 → 必须返回明确错误，**不许静默产出空课表**。
@@ -214,7 +214,7 @@
 - 导入解析的**单元测试必须拿真实导出文件（的脱敏副本）当夹具**。编造的样本锁不住教务系统模板的那些坑。
 - 原始文件含使用者的学号、姓名、班级，而**本仓库是 public**。入库前必须脱敏（替换成假值），且**脱敏结果给使用者过目**。这是硬约束。
 - 脱敏只替换个人字段，**不改动任何结构**——改了结构就锁不住坑了。
-- 脱敏后的夹具提交进仓库（建议 `test/fixtures/`），在任何机器上 clone 都能复现那 15/15。
+- 脱敏后的夹具提交进仓库（建议 `test/fixtures/`），在任何机器上 clone 都能复现那次全量解析。
 - 原始样本留在使用者下载目录，**不提交**。
 
 ### 不测什么
