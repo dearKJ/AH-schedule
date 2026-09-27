@@ -87,7 +87,8 @@ abstract final class ClassSessionBuilder {
   ///   「一门课上到一半改线上」时那一周就会**什么都不显示**——那是静默失败。
   ///
   /// 这一层不合并「教室那条与线上那条」：周次已经说清哪周在哪上，而合并要判断
-  /// 「哪条盖住哪周」，那是展开（issue #9）那边的事。见 [ClassSession.coversWeek]。
+  /// 「哪条盖住哪周」，那是**展开**那边的事——同一格上这两条会被并成一条线上教学
+  /// （见 `WeekGrid`）。见 [ClassSession.coversWeek]。
   static List<ClassSession> _sessionsOf({
     required List<Arrangement> arrangements,
     required int weekday,

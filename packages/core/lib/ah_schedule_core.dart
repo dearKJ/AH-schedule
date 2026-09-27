@@ -24,4 +24,5 @@ export 'src/session_exception.dart';
 export 'src/term_settings.dart';
 export 'src/timetable.dart';
 export 'src/venue.dart';
+export 'src/week_grid.dart';
 export 'src/week_set.dart';
