@@ -48,6 +48,7 @@ app/             Flutter 工程（仅 Android）：data/（drift 数据库、仓
 | [`docs/adr/`](docs/adr/) | 已成文的架构决策：数据模型、无服务器、Flutter 仅 Android |
 | [`docs/reference/ahpu-jwxt-export-format.md`](docs/reference/ahpu-jwxt-export-format.md) | 教务系统导出文件的解析规格（已在真实样本上全量验证） |
 | [`docs/reference/ahpu-bell-schedule.md`](docs/reference/ahpu-bell-schedule.md) | 作息时间表默认配置 |
+| [`docs/reference/timetable-json-format.md`](docs/reference/timetable-json-format.md) | 课表 JSON（v1）——分享与迁移的契约 |
 | [`AGENTS.md`](AGENTS.md) | 本仓库的 agent 配置 |
 
 ## 完成标准

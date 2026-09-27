@@ -36,6 +36,8 @@ dart test
 | `lib/src/term_settings.dart` | 学期设置（第 1 周的第一天、总周数、作息时间表） |
 | `lib/src/timetable.dart` | 课表：一个学年学期的全部安排 |
 | `lib/src/week_grid.dart` | 按周展开（`expandWeek`：课表 + 教学周号 → 该周的格子） |
+| `lib/src/json/timetable_json.dart` | 课表 ⇄ 带版本号的 JSON（分享 / 迁移的契约） |
+| `lib/src/json/json_diagnostics.dart` | 反序列化的错误代码（`JsonIssue`）与 `JsonError` |
 
 导入解析（字节 → 课表 + 诊断）在这一层，但单独归拢在 `lib/src/import/`：
 
@@ -136,12 +138,52 @@ cell.hasConflict;  // 同一格 + 同一周 + 两条安排
   表改短之后才会出现，那是学期设置（issue #12）该提示的事。这里宁可不铺，也不折回第 1
   节或铺到第二天去。
 
+## 课表 JSON（issue #7）
+
+`课表 ⇄ 带版本号的 JSON`，规格里 `core` 三个纯函数入口的第三个。它是**往来于设备与
+同学之间的唯一契约**（ADR-0002：没有服务器，换手机靠它，分享给同学也靠它）。文件
+格式的权威出处是 [`docs/reference/timetable-json-format.md`](../../docs/reference/timetable-json-format.md)。
+
+```dart
+final text = TimetableJson.encode(timetable);       // 课表 → JSON 文本
+final result = TimetableJson.decode(text);          // JSON 文本 → 课表
+final fromFile = TimetableJson.decodeBytes(bytes);  // 文件字节 → 课表
+
+result.isSuccess;          // 解出来了吗
+result.timetable;          // 成功时是课表，失败时是 null
+result.error;              // 失败时是一条 JsonError：code + 说明 + 坏在哪一处
+result.error?.path;        // 'sessions[3].weeks[0]'
+```
+
+- **导出里没有学号 / 姓名 / 班级，因为它们没有位置可写**：`Timetable` 里没有装它们的
+  字段，编码器也只认得那几个键。这条不是靠「记得别写进去」，是靠两条测试盯着
+  （`test/json/export_privacy_test.dart`）：一条拿真实夹具（它的原始字节里**真的**有
+  这三样）导出后正面断言不含，一条递归收集导出产物的**全部键**跟白名单比对——加了新
+  字段就会红。两条都做过反向验证：往编码器里塞一个 `studentId`，两条一起红。
+- **反序列化不抛异常。** 版本号缺失 / 不认识、缺字段、坏字段、字节不是 UTF-8，一律落成
+  `TimetableDecodeResult.error` 里的一条 `JsonError`，**带着它在文件里的位置**
+  （`sessions[3].weeks[0]`）——没有位置那句话使用者无从下手。这条测试里有一组坏输入
+  轮着过一遍，断言没有一种会抛。
+- **路径不靠调用方拼对。** 取值走一个「JSON 对象 + 它在文件里的位置」的小类型，子路径
+  自己从父节点长出来；领域模型的 `ArgumentError.value(x, '字段名', …)` 带着字段名，用它
+  把路径补到**具体那一项**上（`settings` → `settings.firstDayOfWeek1`）。于是「报错说清
+  是哪一处」是结构保证的，不是靠每处调用都记得把字符串拼对。
+- **错误只有一条，不是一列**：这份东西是一份整体契约，结构一坏就没什么可解的了，
+  「哪一处最先坏」就是那条拦路的错误。与导入诊断刻意不同——导入是逐格解，一格坏不
+  影响别格，所以那边是一列。
+- **可选字段与必填字段分得清**：教师、校区、第 1 周的第一天、总周数不在（或写成
+  `null`）都算「没有」；课程名、星期、节次、周次、地点、作息时间表不在就是「缺字段」。
+- **取值校验不在这里抄一份**，交给领域模型自己的构造校验（星期 1..7、周次 1..53、
+  第 1 周第一天必须是周一……），`ArgumentError` 翻成一条坏字段错误，消息原样带着。
+- **例外的类型名认不出来就报错**，不静默丢掉——丢掉一条「这周停课」等于悄悄多上一节课。
+  时段名与例外类型名**写死在对照表里，不跟着 Dart 枚举名走**：文件格式是契约，重命名
+  一个枚举成员不该让所有 v1 文件读不进来。
+
 ## 不在这里的东西
 
-数据形状（issue #3）、导入解析（issue #5）、按周展开（issue #6）都已经落进来了。
-下面这些各自有票，也都落在 `core`：
+数据形状（issue #3）、导入解析（issue #5）、按周展开（issue #6）、课表 JSON 序列化
+（issue #7）都已经落进来了。剩下这个有票，但落在别处：
 
-- 课表 JSON 序列化（带版本号）：issue #7
 - drift schema 与仓储：issue #8（在 `data/`，不在这里）
 
 课程配色**不在 `core`**：规格只说「按课程稳定分配、不入库、不上云」，那是周网格视图
