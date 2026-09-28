@@ -1,9 +1,11 @@
 import 'package:ah_schedule_core/ah_schedule_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../data/academic_term_repository.dart';
 import '../../data/providers.dart';
+import '../academic_term_dialog.dart';
 
 /// 走路骨架的门面（issue #4）。
 ///
@@ -29,12 +31,10 @@ class HomePage extends ConsumerWidget {
         loading: () => const Center(child: CircularProgressIndicator()),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => showDialog<void>(
-          context: context,
-          builder: (_) => const _AddAcademicTermDialog(),
-        ),
-        icon: const Icon(Icons.add),
-        label: const Text('存一个学年学期'),
+        // 导入是这一版的主线：把教务系统导出的文件导进来，才有课表可看。
+        onPressed: () => context.push('/import'),
+        icon: const Icon(Icons.folder_open),
+        label: const Text('导入课表'),
       ),
     );
   }
@@ -51,8 +51,18 @@ class _TermList extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
       children: [
-        // 这一票的核心：这个数字是刚才那次数据库查询的结果，不是写在界面上的常量。
-        Text('库里存了 ${terms.length} 个学年学期', style: theme.textTheme.titleMedium),
+        Row(
+          children: [
+            Expanded(
+              // 这一票的核心：这个数字是刚才那次数据库查询的结果，不是写在界面上的常量。
+              child: Text(
+                '库里存了 ${terms.length} 个学年学期',
+                style: theme.textTheme.titleMedium,
+              ),
+            ),
+            const _AddAcademicTermButton(),
+          ],
+        ),
         const SizedBox(height: 4),
         Text(
           '数据来自设备上的 SQLite 数据库，重启 App 还在。',
@@ -71,6 +81,30 @@ class _TermList extends StatelessWidget {
   }
 }
 
+class _AddAcademicTermButton extends ConsumerWidget {
+  const _AddAcademicTermButton();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return TextButton.icon(
+      icon: const Icon(Icons.add),
+      label: const Text('存一个学年学期'),
+      onPressed: () async {
+        // 学年学期怎么写归领域层认——数据层不碰规则，界面更不碰。
+        final term = await showAcademicTermDialog(context);
+        if (term == null) return;
+
+        final AcademicTermRepository repository = ref.read(
+          academicTermRepositoryProvider,
+        );
+        await repository.save(term);
+        // 重新问数据库要一遍，而不是把刚存进去的东西塞进界面。
+        ref.invalidate(academicTermsProvider);
+      },
+    );
+  }
+}
+
 class _EmptyHint extends StatelessWidget {
   const _EmptyHint();
 
@@ -79,7 +113,9 @@ class _EmptyHint extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.symmetric(vertical: 32),
       child: Text(
-        '库里还没有学年学期。\n点右下角存一个，它会从数据库里被读回来。',
+        '库里还没有学年学期。\n'
+        '点右下角导入一份教务系统导出的课表，它会连学年学期一起存进来；\n'
+        '也可以点上面的「存一个学年学期」自己建一个。',
         textAlign: TextAlign.center,
       ),
     );
@@ -108,75 +144,6 @@ class _LoadFailure extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class _AddAcademicTermDialog extends ConsumerStatefulWidget {
-  const _AddAcademicTermDialog();
-
-  @override
-  ConsumerState<_AddAcademicTermDialog> createState() =>
-      _AddAcademicTermDialogState();
-}
-
-class _AddAcademicTermDialogState
-    extends ConsumerState<_AddAcademicTermDialog> {
-  final _controller = TextEditingController();
-  String? _errorText;
-  var _saving = false;
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  Future<void> _save() async {
-    final AcademicTerm term;
-    try {
-      // 学年学期怎么写归领域层认——数据层不碰规则，界面更不碰。
-      term = AcademicTerm.parseLabel(_controller.text);
-    } on FormatException catch (error) {
-      setState(() => _errorText = error.message);
-      return;
-    }
-
-    setState(() => _saving = true);
-    final AcademicTermRepository repository = ref.read(
-      academicTermRepositoryProvider,
-    );
-    await repository.save(term);
-    if (!mounted) return;
-
-    // 重新问数据库要一遍，而不是把刚存进去的东西塞进界面。
-    ref.invalidate(academicTermsProvider);
-    Navigator.of(context).pop();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: const Text('存一个学年学期'),
-      content: TextField(
-        controller: _controller,
-        autofocus: true,
-        enabled: !_saving,
-        onSubmitted: (_) => _save(),
-        decoration: InputDecoration(
-          labelText: '学年学期',
-          // 用的就是教务系统那种写法，照着抄就行。
-          hintText: '2026-2027学年第一学期',
-          errorText: _errorText,
-        ),
-      ),
-      actions: [
-        TextButton(
-          onPressed: _saving ? null : () => Navigator.of(context).pop(),
-          child: const Text('算了'),
-        ),
-        FilledButton(onPressed: _saving ? null : _save, child: const Text('存')),
-      ],
     );
   }
 }

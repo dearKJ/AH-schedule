@@ -14,6 +14,7 @@ export 'src/clock_time.dart';
 export 'src/day_block.dart';
 export 'src/import/cell_arrangements.dart';
 export 'src/import/class_session_builder.dart';
+export 'src/import/export_header.dart';
 export 'src/import/gbk_codec.dart';
 export 'src/import/html_course_table.dart';
 export 'src/import/import_diagnostics.dart';

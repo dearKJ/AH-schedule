@@ -64,7 +64,19 @@ core 接进来之后，边界还有三种被悄悄破坏的方式，对应下面
 数据库版本因此从 1 升到 2：走路骨架那一版装的库里只有学年学期一张表，升上来时会补上另外
 三张（`AppDatabase.migration` 的 `onUpgrade`），原来存着的学年学期原样留着。
 
-周网格（#10）、导入（#5/#9）、手动增删改（#11）、学期设置界面（#12）都还没开始。
+**导入走通了**（issue #9）：`lib/ui/import/` 下是「选文件 → 解析 → 预览 → 确认 → 整学期覆盖」
+这一条路。选文件在 [`export_file.dart`](lib/ui/import/export_file.dart)（唯一碰平台的一处），
+预览那一页在 [`import_preview.dart`](lib/ui/import/import_preview.dart)：说清会替换整学期、
+警告手动例外会被清掉、把解不了的格子连位置与原文一起摆出来、格子可改可补，确认之后
+整学期覆盖。领域层那边顺带多了一个 `ExportHeader`：从导出文件的页头读那个学年学期，只当
+预览页的**默认值**用（归属仍然是使用者确认的那个）。
+
+> **库文件的连接方式动过一次，理由写在代码里**：`AppDatabase.openFile` 用的是主 isolate
+> 直连，不是 `NativeDatabase.createInBackground`。后台 isolate 那条连接在验证机上写不进库
+> （`attempt to write a readonly database`），导入的东西一条都留不下；换成直连就正常。
+> 机制没查清，见 issue #14。
+
+周网格（#10）、手动增删改（#11）、学期设置界面（#12）、导出 / 导入分享文件（#13）还没开始。
 
 ## 一个环境坑
 

@@ -143,9 +143,20 @@ class TermSettingsTable extends Table {
 class AppDatabase extends _$AppDatabase {
   /// 打开一个放在文件里的数据库。
   ///
-  /// `createInBackground` 把 SQLite 的活儿挪到单独的 isolate，别卡住界面线程。
-  AppDatabase.openFile(File file)
-    : super(NativeDatabase.createInBackground(file));
+  /// **在界面线程的 isolate 上直连**（`NativeDatabase(file)`），不走
+  /// `NativeDatabase.createInBackground`。这是被设备上的实测逼出来的：
+  ///
+  /// 后台 isolate 那条连接在本项目的验证机（Android 16 / API 36 模拟器）上**写不进库**——
+  /// 建表能成，一 INSERT 就报 `attempt to write a readonly database (code 8)`，于是导入的
+  /// 东西一条都留不下来；同一个进程里换成主 isolate 直连，同一个文件、同一段代码，写与
+  /// 读都正常。文件权限、目录可写、SELinux 都排查过，不是那些。**具体机制没查清**
+  /// （怀疑是后台 isolate 里解析到的 sqlite3 原生库与主 isolate 不是同一个，见 issue #14），
+  /// 所以先按**能跑的那条**走。
+  ///
+  /// 代价是 SQLite 的活儿回到界面线程。对这个 App 可以接受：一个学期的课表是几十行、
+  /// 查询都是按学期取全量，毫秒级；换来的是「存进去的东西真的在」。真出现卡顿再回来
+  /// 处理，别为了理论上更漂亮的结构留一个存不住数据的库。
+  AppDatabase.openFile(File file) : super(NativeDatabase(file));
 
   /// 一个**用完就没**的内存库，给测试用。
   ///
@@ -177,7 +188,7 @@ class AppDatabase extends _$AppDatabase {
     /// 挂在它上面的例外跟着走。
     ///
     /// 放在这里而不是各个构造函数的 `setup:` 里，是因为它必须**对每一条连接**都生效
-    /// （文件库、内存库、以及 `createInBackground` 起的那条后台 isolate）。
+    /// ——文件库、内存库、以及测试里那个用完就没的库，走的都是这条 `beforeOpen`。
     beforeOpen: (details) async {
       await customStatement('PRAGMA foreign_keys = ON');
     },

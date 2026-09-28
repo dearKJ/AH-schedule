@@ -35,3 +35,12 @@ final timetableRepositoryProvider = Provider<TimetableRepository>(
 final academicTermsProvider = FutureProvider<List<AcademicTerm>>(
   (ref) => ref.watch(academicTermRepositoryProvider).loadAll(),
 );
+
+/// **库里现在**存着的某个学年学期的整张课表。没存过是 null。
+///
+/// 与 [academicTermsProvider] 同理，它是「读回来的」而不是界面记着的。导入预览要用它
+/// 说出两件事：这个学期**现在**有多少条安排与例外（会被整学期覆盖掉），以及它的学期
+/// 设置长什么样（导入不动它，得原样带回去）。
+final termTimetableProvider = FutureProvider.family<Timetable?, AcademicTerm>(
+  (ref, term) => ref.watch(timetableRepositoryProvider).load(term),
+);

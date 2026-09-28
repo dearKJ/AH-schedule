@@ -238,6 +238,16 @@ void main() {
       expect(result.timetable.term, term);
     });
 
+    test('页头里写着别的学年学期，也改不了这份课表的归属', () {
+      // 文件里那一行只是给界面的默认值（见 `ExportHeader`），不是归属的依据：
+      // 归属是调用方传进来的这个参数。
+      final result = run(
+        '<h3>2027-2028学年第二学期</h3>'
+        '<table id="manualArrangeCourseTable"></table>',
+      );
+      expect(result.timetable.term, term);
+    });
+
     test('settings 传进去就落上去，不传就是默认的', () {
       final settings = TermSettings(totalWeeks: 18);
       final withSettings = TimetableImporter.importText(

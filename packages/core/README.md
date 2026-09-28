@@ -44,6 +44,7 @@ dart test
 | 文件 | 干什么 |
 | --- | --- |
 | `lib/src/import/timetable_importer.dart` | 入口：`importBytes` / `importText`，与结果类型 `TimetableImportResult` |
+| `lib/src/import/export_header.dart` | 页头里那个学年学期（`ExportHeader`）——读得出来，但只当参考 |
 | `lib/src/import/gbk_codec.dart` | GBK 解码（自带映射表，见下） |
 | `lib/src/import/gbk_table.dart` | **生成的文件**，CP936 映射表，由 `tools/generate_gbk_table.py` 烘出来 |
 | `lib/src/import/html_course_table.dart` | 抠出课表那张表、按 `rowspan` 铺成逻辑网格 |
@@ -87,6 +88,11 @@ HTML**，所以先按 GBK 解码、再当 HTML 解析，**不需要任何 Excel 
   不要手改；重跑用 `python tools/generate_gbk_table.py`。之所以自带一张表而不是引
   `charset` / `fast_gbk`，是因为这个包要守住**零运行期依赖**——那是上面那条边界检查
   赖以成立的前提。
+- **文件页头里那个学年学期只当参考。** `ExportHeader.academicTermOfBytes` 从 `<h3>` 里
+  把 `2026-2027学年第一学期` 读出来并归一化，但它是给界面**预填默认值**用的：真正定
+  归属的是调用方传给 `importBytes` 的那个学年学期（学期常常是使用者在教务系统里自己
+  选的，认错学期等于把课表挂到别的学期上）。它有个按字节的入口，是为了让界面不必为了
+  读一行学期名就把整篇带学号、姓名、班级的文本留在手上。
 
 ## 「不依赖 Flutter」是怎么被强制的
 

@@ -149,6 +149,26 @@ void main() {
     // 学年学期来自调用方，不是从文件里猜的。
     expect(result.timetable.term.id, '2026-2027-1');
   });
+
+  test('页头里写的学年学期读得出来，但它只当参考', () {
+    expect(
+      ExportHeader.academicTermOfBytes(fixtureBytes()),
+      AcademicTerm.parseLabel('2026-2027学年第一学期'),
+      reason: '文件里写作「第一学期」，要归一化成界面上的「1学期」',
+    );
+
+    // 归属是调用方说了算：换一个学年学期导进来，解出的安排一条不多一条不少。
+    final other = TimetableImporter.importBytes(
+      fixtureBytes(),
+      term: AcademicTerm.parseLabel('2027-2028学年第一学期'),
+    );
+    expect(other.timetable.term.id, '2027-2028-1');
+    expect(
+      other.timetable.sessions,
+      result.timetable.sessions,
+      reason: '学期不是解析的输入——换个学期，解出来的还是同一张课表',
+    );
+  });
 }
 
 /// 把一条安排写成一行便于比对。

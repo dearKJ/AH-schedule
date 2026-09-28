@@ -40,6 +40,11 @@ dependencies:
   # 找不到就报一条吓人的警告（`Expected to find fonts for … packages/cupertino_icons/…`）。
   cupertino_icons: ^1.0.9
 
+  # 选文件（导入课表那一步）：调 Android 自己的文件选择器，拿回文件的**字节**。
+  # 领域层的导入入口要的就是字节（先 GBK 解码、再当 HTML 解析），所以这里只要把文件
+  # 读成 Uint8List，不引任何 Excel / HTML 解析库——那些坑在 core 里自己解（issue #5）。
+  file_picker: ^13.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
