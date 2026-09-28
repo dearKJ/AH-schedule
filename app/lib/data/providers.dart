@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'academic_term_repository.dart';
 import 'app_database.dart';
+import 'timetable_repository.dart';
 
 /// App 的数据库。
 ///
@@ -17,6 +18,14 @@ final appDatabaseProvider = Provider<AppDatabase>(
 
 final academicTermRepositoryProvider = Provider<AcademicTermRepository>(
   (ref) => AcademicTermRepository(ref.watch(appDatabaseProvider)),
+);
+
+/// 课表内容（上课安排 / 例外 / 学期设置）的读写入口。
+final timetableRepositoryProvider = Provider<TimetableRepository>(
+  (ref) => TimetableRepository(
+    ref.watch(appDatabaseProvider),
+    ref.watch(academicTermRepositoryProvider),
+  ),
 );
 
 /// 库里现有的学年学期。
