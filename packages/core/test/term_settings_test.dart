@@ -78,4 +78,57 @@ void main() {
       );
     });
   });
+
+  group('某一天落在第几教学周', () {
+    // 2026-09-07 是周一，拿它当「第 1 周的第一天」。
+    final settings = TermSettings(firstDayOfWeek1: DateTime(2026, 9, 7));
+
+    test('第 1 周那七天都算第 1 周', () {
+      expect(settings.weekOf(DateTime(2026, 9, 7)), 1, reason: '周一');
+      expect(settings.weekOf(DateTime(2026, 9, 13)), 1, reason: '周日，仍是第 1 周');
+    });
+
+    test('第 N 周 = 从开学那周的周一算起的连续 7 天', () {
+      expect(settings.weekOf(DateTime(2026, 9, 14)), 2);
+      expect(settings.weekOf(DateTime(2026, 9, 20)), 2, reason: '第 2 周的周日');
+      expect(settings.weekOf(DateTime(2026, 9, 21)), 3);
+    });
+
+    test('一天里的时分秒不影响归到哪一周', () {
+      expect(
+        settings.weekOf(DateTime(2026, 9, 14, 23, 59, 59)),
+        2,
+        reason: '按日期算，不按时刻算',
+      );
+      expect(settings.weekOf(DateTime(2026, 9, 20, 0, 0, 1)), 2);
+    });
+
+    test('跨月、跨年照算', () {
+      // 2027-01-01 与 2026-09-07 差 116 天，116 = 16 × 7 + 4，所以落在第 17 周。
+      expect(settings.weekOf(DateTime(2027, 1, 1)), 17);
+      expect(settings.weekOf(DateTime(2026, 10, 1)), 4);
+    });
+
+    test('范围的两个端点：第 1 周与第 53 周都算得出来，第 54 周越界', () {
+      expect(
+        settings.weekOf(DateTime(2027, 9, 12)),
+        WeekSet.maxWeek,
+        reason: '第 53 周的周日',
+      );
+      expect(() => settings.weekOf(DateTime(2027, 9, 13)), throwsArgumentError);
+    });
+
+    test('开学之前明确报错，不返回 0 或负数', () {
+      expect(() => settings.weekOf(DateTime(2026, 9, 6)), throwsArgumentError);
+      expect(() => settings.weekOf(DateTime(2026, 1, 1)), throwsArgumentError);
+    });
+
+    test('没设「第 1 周的第一天」时不猜，明确报错', () {
+      expect(
+        () => TermSettings().weekOf(DateTime(2026, 9, 7)),
+        throwsStateError,
+        reason: '「没设」与「第 0 周」是两件事，不能混成一个返回值',
+      );
+    });
+  });
 }

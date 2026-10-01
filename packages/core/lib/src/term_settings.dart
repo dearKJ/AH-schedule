@@ -60,6 +60,41 @@ class TermSettings {
     return DateTime(day.year, day.month, day.day - (day.weekday - 1));
   }
 
+  /// 某一天落在第几教学周。
+  ///
+  /// 一周从**周一**算起，第 N 周就是从「第 1 周的第一天」那个周一算起的连续 7 天——
+  /// 星期栏里今天那一列高亮、以及「跳回当前教学周」都靠它（规格「时间规则」）。
+  ///
+  /// 一天里的时分秒不参与计算，只按日期算。
+  ///
+  /// **没设「第 1 周的第一天」时抛 [StateError]**——「没设」与「第 0 周」是两件事，
+  /// 混成同一个返回值就等于替使用者猜了一个开学日期。开学之前、以及算出来超出
+  /// `1..53` 的那些天抛 [ArgumentError]：和 [WeekGrid] 收周号时一样，周次认错比报错
+  /// 糟得多。
+  int weekOf(DateTime date) {
+    final firstDay = firstDayOfWeek1;
+    if (firstDay == null) {
+      throw StateError('还没设「第 1 周的第一天」，算不出 $date 是第几教学周');
+    }
+    final days = dateOnly(date).difference(firstDay).inDays;
+    // 用 floorDiv 而不是 `~/`：开学之前那些天算出来是负数，`~/` 向零取整会把
+    // 「开学前一周」和「开学后一周」算成同一周。
+    final week = _floorDiv(days, 7) + 1;
+    if (week < 1 || week > WeekSet.maxWeek) {
+      throw ArgumentError.value(
+        date,
+        'date',
+        '这一天落在第 $week 教学周，超出 1..${WeekSet.maxWeek} 的范围',
+      );
+    }
+    return week;
+  }
+
+  /// 向下取整的整除：`_floorDiv(-1, 7) == -1`，而 `-1 ~/ 7 == 0`。
+  static int _floorDiv(int numerator, int denominator) =>
+      (numerator - (numerator % denominator + denominator) % denominator) ~/
+      denominator;
+
   @override
   String toString() =>
       'TermSettings(${firstDayOfWeek1 ?? '未设第 1 周'}, '

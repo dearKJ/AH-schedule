@@ -76,7 +76,37 @@ core 接进来之后，边界还有三种被悄悄破坏的方式，对应下面
 > （`attempt to write a readonly database`），导入的东西一条都留不下；换成直连就正常。
 > 机制没查清，见 issue #14。
 
-周网格（#10）、手动增删改（#11）、学期设置界面（#12）、导出 / 导入分享文件（#13）还没开始。
+**周网格走通了**（issue #10）：打开 App 就是整周的课表，在
+[`lib/ui/week/`](lib/ui/week/) 下。
+
+- [`week_grid_page.dart`](lib/ui/week/week_grid_page.dart)——首页脚手架：周次导航、三种
+  「没得看」（没学期 / 这个学期没课 / 读库失败）分开说、AppBar 上的学期名可点开换学期。
+- [`week_grid_view.dart`](lib/ui/week/week_grid_view.dart)——网格本体。**星期栏在滚动区
+  之外**，这就是「吸顶」；连堂那一整块画在它起始的那一行里、高度是节数 × 一格高，所以占满
+  它跨的那几格；冲突的格子上下叠着画、两条都标红。
+- [`session_detail_sheet.dart`](lib/ui/week/session_detail_sheet.dart)——点一格看详情：
+  课程、教师、节次、**由作息时间表算出的具体时刻**、地点、校区、周次、例外；冲突时顶部
+  一条说明 + 双方都列出来，**不替使用者取舍**。
+- [`course_colors.dart`](lib/ui/week/course_colors.dart)——课名 → 颜色。**自带一个写死
+  常数的散列**，不用 `String.hashCode`（Dart 不保证它跨进程稳定，「重启后颜色不变」会失守）。
+  由 `test/ui/course_colors_test.dart` 盯着。
+- [`session_text.dart`](lib/ui/week/session_text.dart)——周次的写法、周号 → 那七天的日期、
+  节次 → 具体时刻，都只有这一份。
+
+原来的「走路骨架」首页（学年学期列表）并进了 AppBar 上那张 sheet
+（[`term_sheet.dart`](lib/ui/week/term_sheet.dart)）：一屏只能有一张课表，课表才是首页。
+
+领域层这一票多了两处**纯逻辑**，都在 `packages/core`、都有测试：
+
+- `TermSettings.weekOf(某一天)` → 第几教学周。没设「第 1 周的第一天」时**抛错不猜**。
+- `WeekRange.of(安排们, settings:)` → 周次导航能翻到哪儿。**范围跟着数据走**，总周数只把
+  范围往外挪，不会为了迁就它把已经排着的课砍掉。
+
+> **今天高亮与「回到本周」在 #12 之前是「说不出来」的状态**：两者都要靠「第 1 周的第一天」，
+> 而填它的界面属于 issue #12。没填时网格照画、只是不高亮今天、点「回到本周」会明说算不出
+> 来——**不猜一个开学日期**，那样会在使用者不知情的时候高亮错一列。
+
+手动增删改（#11）、学期设置界面（#12）、导出 / 导入分享文件（#13）还没开始。
 
 ## 一个环境坑
 
